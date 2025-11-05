@@ -5,6 +5,7 @@ import { Plan } from '@/types/plan';
 import { BaseLayout } from './BaseLayout';
 import { PremiumFeatures } from './PremiumFeatures';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 /**
  * TutorialSchoolPage コンポーネントのプロパティ
@@ -176,6 +177,79 @@ export const TutorialSchoolPage = ({ companyInfo, plan }: TutorialSchoolPageProp
                   <p className="text-gray-600 leading-relaxed">
                     {item.description}
                   </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 教室風景セクション - 画像ギャラリー */}
+      <section className="py-20 bg-gradient-to-b from-white to-gray-50">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <div className="inline-block bg-teal-100 text-teal-700 px-5 py-2 rounded-full text-sm font-bold mb-4">
+              Classroom
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              教室の様子
+            </h2>
+            <p className="text-gray-600 text-lg">
+              明るく集中できる学習環境をご用意しています
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            {[
+              {
+                src: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=80',
+                alt: '学習風景 - 生徒が集中して勉強している様子',
+                title: '集中できる学習環境',
+              },
+              {
+                src: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&q=80',
+                alt: '個別指導の様子',
+                title: '一人ひとりに寄り添う指導',
+              },
+              {
+                src: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&q=80',
+                alt: '自習室での学習風景',
+                title: '充実した自習室',
+              },
+              {
+                src: 'https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=800&q=80',
+                alt: '講師による授業風景',
+                title: 'わかりやすい授業',
+              },
+            ].map((image, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="relative group overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-shadow"
+              >
+                <div className="relative h-80">
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="absolute bottom-0 left-0 right-0 p-6">
+                      <h3 className="text-white text-xl font-bold">
+                        {image.title}
+                      </h3>
+                    </div>
+                  </div>
                 </div>
               </motion.div>
             ))}
@@ -427,12 +501,14 @@ export const TutorialSchoolPage = ({ companyInfo, plan }: TutorialSchoolPageProp
                   category: '教室だより',
                   date: '2025-11-01',
                   excerpt: '夏期講習では、これまでの総復習と苦手分野の克服を重点的に行います。一人ひとりの学習状況に合わせたカリキュラムで...',
+                  image: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=600&q=80',
                 },
                 {
                   title: '効果的な暗記方法とは？講師が教える学習テクニック',
                   category: '学習方法',
                   date: '2025-10-28',
                   excerpt: '定期テストや受験勉強に欠かせない「暗記」。ただ繰り返すだけでは効率が悪い暗記も、正しい方法で行えば...',
+                  image: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=600&q=80',
                 },
               ].map((post, index) => (
                 <motion.div
@@ -441,26 +517,36 @@ export const TutorialSchoolPage = ({ companyInfo, plan }: TutorialSchoolPageProp
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow border-2 border-gray-100 hover:border-emerald-200"
+                  className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow overflow-hidden border-2 border-gray-100 hover:border-emerald-200"
                 >
-                  <div className="flex items-center gap-3 mb-4">
-                    <span className="bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-4 py-1 rounded-full text-xs font-bold">
-                      {post.category}
-                    </span>
-                    <span className="text-sm text-gray-500 font-mono">
-                      {post.date}
-                    </span>
+                  <div className="relative h-48 overflow-hidden">
+                    <Image
+                      src={post.image}
+                      alt={post.title}
+                      fill
+                      className="object-cover transition-transform duration-500 hover:scale-110"
+                    />
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 leading-tight">
-                    {post.title}
-                  </h3>
-                  <p className="text-gray-600 leading-relaxed mb-4">
-                    {post.excerpt}
-                  </p>
-                  <button className="text-emerald-600 font-bold text-sm hover:text-teal-600 transition-colors flex items-center gap-2">
-                    続きを読む
-                    <span>→</span>
-                  </button>
+                  <div className="p-6">
+                    <div className="flex items-center gap-3 mb-4">
+                      <span className="bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-4 py-1 rounded-full text-xs font-bold">
+                        {post.category}
+                      </span>
+                      <span className="text-sm text-gray-500 font-mono">
+                        {post.date}
+                      </span>
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-3 leading-tight">
+                      {post.title}
+                    </h3>
+                    <p className="text-gray-600 leading-relaxed mb-4">
+                      {post.excerpt}
+                    </p>
+                    <button className="text-emerald-600 font-bold text-sm hover:text-teal-600 transition-colors flex items-center gap-2">
+                      続きを読む
+                      <span>→</span>
+                    </button>
+                  </div>
                 </motion.div>
               ))}
             </div>
