@@ -1,0 +1,73 @@
+import { Property } from '@/types/real-estate';
+
+/**
+ * 不動産物件のモックデータ
+ */
+export const MOCK_PROPERTIES: Property[] = [
+  {
+    id: '1',
+    title: '駅徒歩5分の好立地マンション',
+    price: 3980000,
+    area: 65.5,
+    layout: '3LDK',
+    location: '東京都渋谷区恵比寿',
+    buildingAge: 5,
+    imageUrl: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&h=600&fit=crop',
+    description: '恵比寿駅徒歩5分の好立地。南向きの明るい室内で、ファミリーにも最適です。',
+  },
+  {
+    id: '2',
+    title: 'タワーマンション最上階',
+    price: 8500000,
+    area: 95.2,
+    layout: '4LDK',
+    location: '東京都港区六本木',
+    buildingAge: 3,
+    imageUrl: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&h=600&fit=crop',
+    description: '六本木の高級タワーマンション最上階。360度のパノラマビューが自慢です。',
+  },
+  {
+    id: '3',
+    title: 'リノベーション済み一戸建て',
+    price: 5200000,
+    area: 110.0,
+    layout: '4LDK',
+    location: '東京都世田谷区成城',
+    buildingAge: 15,
+    imageUrl: 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&h=600&fit=crop',
+    description: '閑静な住宅街の一戸建て。フルリノベーション済みで即入居可能です。',
+  },
+  {
+    id: '4',
+    title: 'デザイナーズマンション',
+    price: 2800000,
+    area: 45.8,
+    layout: '1LDK',
+    location: '東京都目黒区中目黒',
+    buildingAge: 2,
+    imageUrl: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&h=600&fit=crop',
+    description: '中目黒のデザイナーズマンション。洗練された空間でおしゃれな暮らしを。',
+  },
+  {
+    id: '5',
+    title: '都心の隠れ家的マンション',
+    price: 4500000,
+    area: 72.3,
+    layout: '2LDK',
+    location: '東京都千代田区麹町',
+    buildingAge: 8,
+    imageUrl: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=600&fit=crop',
+    description: '麹町の静かな住宅街。都心にありながら落ち着いた環境です。',
+  },
+  {
+    id: '6',
+    title: 'ペット可のファミリー向け物件',
+    price: 3200000,
+    area: 80.0,
+    layout: '3LDK',
+    location: '東京都品川区大井町',
+    buildingAge: 10,
+    imageUrl: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=600&fit=crop',
+    description: 'ペットと一緒に暮らせる広々としたマンション。専用庭付きです。',
+  },
+];
