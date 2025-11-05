@@ -21,3 +21,17 @@ global.IntersectionObserver = class IntersectionObserver {
   }
   unobserve() {}
 };
+
+// Next.js navigationのモック
+jest.mock('next/navigation', () => ({
+  useRouter: jest.fn(() => ({
+    push: jest.fn(),
+    back: jest.fn(),
+    forward: jest.fn(),
+    refresh: jest.fn(),
+    replace: jest.fn(),
+    prefetch: jest.fn(),
+  })),
+  usePathname: jest.fn(() => '/'),
+  useSearchParams: jest.fn(() => new URLSearchParams()),
+}));

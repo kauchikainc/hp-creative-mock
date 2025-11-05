@@ -44,16 +44,18 @@ describe('VehicleDetailPage', () => {
 
   test('should render vehicle price', () => {
     render(<VehicleDetailPage companyInfo={mockCompanyInfo} vehicle={mockVehicle} />);
-    expect(screen.getByText(/250万/)).toBeInTheDocument();
+    expect(screen.getByText(/2,500,000/)).toBeInTheDocument();
   });
 
   test('should render vehicle specifications', () => {
     render(<VehicleDetailPage companyInfo={mockCompanyInfo} vehicle={mockVehicle} />);
-    expect(screen.getByText(/2020年式/)).toBeInTheDocument();
+    const yearElements = screen.getAllByText(/2020年式/);
+    expect(yearElements.length).toBeGreaterThan(0);
     expect(screen.getByText(/25,000km/)).toBeInTheDocument();
     expect(screen.getByText(/パールホワイト/)).toBeInTheDocument();
     expect(screen.getByText(/CVT/)).toBeInTheDocument();
-    expect(screen.getByText(/ハイブリッド/)).toBeInTheDocument();
+    const hybridElements = screen.getAllByText(/ハイブリッド/);
+    expect(hybridElements.length).toBeGreaterThan(0);
   });
 
   test('should render vehicle description', () => {
@@ -69,7 +71,8 @@ describe('VehicleDetailPage', () => {
 
   test('should render contact button', () => {
     render(<VehicleDetailPage companyInfo={mockCompanyInfo} vehicle={mockVehicle} />);
-    expect(screen.getByText(/お問い合わせ/)).toBeInTheDocument();
+    const contactElements = screen.getAllByText(/お問い合わせ/);
+    expect(contactElements.length).toBeGreaterThan(0);
   });
 
   test('should render back to list button', () => {

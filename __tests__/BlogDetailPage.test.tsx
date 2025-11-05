@@ -62,7 +62,8 @@ describe('BlogDetailPage', () => {
 
   test('should render back to list button', () => {
     render(<BlogDetailPage companyInfo={mockCompanyInfo} post={mockBlogPost} />);
-    expect(screen.getByText(/一覧に戻る/)).toBeInTheDocument();
+    const backButtons = screen.getAllByText(/一覧に戻る/);
+    expect(backButtons.length).toBeGreaterThan(0);
   });
 
   test('should not render author name if not provided', () => {

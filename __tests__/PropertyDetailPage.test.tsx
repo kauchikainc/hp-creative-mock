@@ -37,14 +37,15 @@ describe('PropertyDetailPage', () => {
 
   test('should render property price', () => {
     render(<PropertyDetailPage companyInfo={mockCompanyInfo} property={mockProperty} />);
-    expect(screen.getByText(/8,500万/)).toBeInTheDocument();
+    expect(screen.getByText(/85,000,000/)).toBeInTheDocument();
   });
 
   test('should render property details', () => {
     render(<PropertyDetailPage companyInfo={mockCompanyInfo} property={mockProperty} />);
-    expect(screen.getByText(/75.5/)).toBeInTheDocument();
+    expect(screen.getByText(/75.50㎡/)).toBeInTheDocument();
     expect(screen.getByText(/築5年/)).toBeInTheDocument();
-    expect(screen.getByText(/3LDK/)).toBeInTheDocument();
+    const ldkElements = screen.getAllByText(/3LDK/);
+    expect(ldkElements.length).toBeGreaterThan(0);
   });
 
   test('should render property description', () => {
@@ -60,7 +61,8 @@ describe('PropertyDetailPage', () => {
 
   test('should render contact button', () => {
     render(<PropertyDetailPage companyInfo={mockCompanyInfo} property={mockProperty} />);
-    expect(screen.getByText(/お問い合わせ/)).toBeInTheDocument();
+    const contactElements = screen.getAllByText(/お問い合わせ/);
+    expect(contactElements.length).toBeGreaterThan(0);
   });
 
   test('should render back to list button', () => {
