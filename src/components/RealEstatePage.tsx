@@ -2,14 +2,19 @@
 
 import { CompanyInfo } from '@/types';
 import { Plan } from '@/types/plan';
+import { Property } from '@/types/real-estate';
 import { BaseLayout } from './BaseLayout';
 import { PremiumFeatures } from './PremiumFeatures';
+import { PropertyDetailPage } from './PropertyDetailPage';
+import { BlogDetailPage } from './BlogDetailPage';
 import { motion } from 'framer-motion';
 import { MOCK_PROPERTIES } from '@/data/real-estate/properties';
 import { MOCK_BLOG_POSTS } from '@/data/real-estate/blog';
 import { MOCK_NEWS } from '@/data/real-estate/news';
 import { formatPrice, formatArea } from '@/lib/formatters';
 import Image from 'next/image';
+import { useState } from 'react';
+import { BlogPost } from '@/types/cms';
 
 /**
  * RealEstatePage コンポーネントのプロパティ
@@ -26,6 +31,18 @@ interface RealEstatePageProps {
  * 落ち着いた高級感のあるデザインで、信頼感と安定感を重視
  */
 export const RealEstatePage = ({ companyInfo, plan }: RealEstatePageProps) => {
+  const [selectedProperty, setSelectedProperty] = useState<Property | null>(null);
+  const [selectedBlogPost, setSelectedBlogPost] = useState<BlogPost | null>(null);
+
+  // 詳細ページ表示中はBaseLayoutを使わず、詳細ページコンポーネントを直接表示
+  if (selectedProperty) {
+    return <PropertyDetailPage companyInfo={companyInfo} property={selectedProperty} />;
+  }
+
+  if (selectedBlogPost) {
+    return <BlogDetailPage companyInfo={companyInfo} post={selectedBlogPost} />;
+  }
+
   return (
     <BaseLayout companyInfo={companyInfo}>
       {/* ヒーローセクション - 大きな背景画像と重厚感のあるデザイン */}
@@ -223,6 +240,7 @@ export const RealEstatePage = ({ companyInfo, plan }: RealEstatePageProps) => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
+                  onClick={() => setSelectedProperty(property)}
                   className="bg-white border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow cursor-pointer group"
                 >
                   <div className="relative h-56 overflow-hidden">
@@ -282,6 +300,7 @@ export const RealEstatePage = ({ companyInfo, plan }: RealEstatePageProps) => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
+                  onClick={() => setSelectedBlogPost(post)}
                   className="bg-white border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow cursor-pointer"
                 >
                   <div className="relative h-56 overflow-hidden">

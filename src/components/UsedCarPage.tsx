@@ -2,13 +2,16 @@
 
 import { CompanyInfo } from '@/types';
 import { Plan } from '@/types/plan';
+import { Vehicle } from '@/types/used-car';
 import { BaseLayout } from './BaseLayout';
 import { PremiumFeatures } from './PremiumFeatures';
+import { VehicleDetailPage } from './VehicleDetailPage';
 import { motion } from 'framer-motion';
 import { MOCK_VEHICLES } from '@/data/used-car/vehicles';
 import { MOCK_SALES_RECORDS } from '@/data/used-car/sales-history';
 import { formatPrice } from '@/lib/formatters';
 import Image from 'next/image';
+import { useState } from 'react';
 
 /**
  * UsedCarPage コンポーネントのプロパティ
@@ -25,6 +28,13 @@ interface UsedCarPageProps {
  * エネルギッシュでダイナミックなカタログ風デザイン
  */
 export const UsedCarPage = ({ companyInfo, plan }: UsedCarPageProps) => {
+  const [selectedVehicle, setSelectedVehicle] = useState<Vehicle | null>(null);
+
+  // 詳細ページ表示中はBaseLayoutを使わず、詳細ページコンポーネントを直接表示
+  if (selectedVehicle) {
+    return <VehicleDetailPage companyInfo={companyInfo} vehicle={selectedVehicle} />;
+  }
+
   return (
     <BaseLayout companyInfo={companyInfo}>
       {/* ヒーローセクション - ダイナミックな斜めレイアウト */}
@@ -212,6 +222,7 @@ export const UsedCarPage = ({ companyInfo, plan }: UsedCarPageProps) => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
+                  onClick={() => setSelectedVehicle(vehicle)}
                   className="bg-white overflow-hidden hover:shadow-2xl transition-shadow cursor-pointer group border-2 border-gray-200 hover:border-red-600"
                 >
                   <div className="relative h-56 overflow-hidden bg-gray-100">
