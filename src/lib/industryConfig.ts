@@ -45,6 +45,13 @@ export const INDUSTRY_CONFIG: Record<Industry, IndustryConfig> = {
     accentColor: '#c084fc', // purple-400
     font: 'serif',
   },
+  'scaffolding': {
+    name: '足場・鳶職',
+    description: '安全第一、確かな技術で現場を支える',
+    heroImage: '/images/scaffolding-hero.jpg',
+    primaryColor: '#f59e0b', // amber-500
+    accentColor: '#fb923c', // orange-400
+  },
   // 今後追加予定の業種設定例:
   // 'construction': {
   //   name: '建設業',
