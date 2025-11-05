@@ -5,6 +5,7 @@ import { Industry, Plan, INDUSTRIES } from '@/types/plan';
 import { RealEstatePage } from './RealEstatePage';
 import { UsedCarPage } from './UsedCarPage';
 import { BeautySalonPage } from './BeautySalonPage';
+import { ScaffoldingPage } from './ScaffoldingPage';
 import { notFound } from 'next/navigation';
 
 /**
@@ -43,6 +44,9 @@ export const IndustryPlanClient = ({ industry, plan }: IndustryPlanClientProps) 
 
     case INDUSTRIES.BEAUTY_SALON:
       return <BeautySalonPage companyInfo={companyInfo} plan={plan} />;
+
+    case INDUSTRIES.SCAFFOLDING:
+      return <ScaffoldingPage companyInfo={companyInfo} plan={plan} />;
 
     default:
       notFound();
