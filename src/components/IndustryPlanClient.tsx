@@ -9,6 +9,7 @@ import { ScaffoldingPage } from './ScaffoldingPage';
 import { TutorialSchoolPage } from './TutorialSchoolPage';
 import { PetShopPage } from './PetShopPage';
 import { RyokanPage } from './RyokanPage';
+import { DiningBarPage } from './DiningBarPage';
 import { notFound } from 'next/navigation';
 
 /**
@@ -59,6 +60,9 @@ export const IndustryPlanClient = ({ industry, plan }: IndustryPlanClientProps) 
 
     case INDUSTRIES.RYOKAN:
       return <RyokanPage companyInfo={companyInfo} plan={plan} />;
+
+    case INDUSTRIES.DINING_BAR:
+      return <DiningBarPage companyInfo={companyInfo} plan={plan} />;
 
     default:
       notFound();

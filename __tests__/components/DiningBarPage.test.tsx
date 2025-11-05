@@ -68,7 +68,7 @@ describe('DiningBarPage', () => {
     );
 
     // イベント情報セクションが表示される（見出しとして）
-    const eventHeadings = screen.getAllByRole('heading', { name: /イベント/ });
+    const eventHeadings = screen.getAllByRole('heading', { name: /Events/ });
     expect(eventHeadings.length).toBeGreaterThan(0);
   });
 
@@ -81,7 +81,7 @@ describe('DiningBarPage', () => {
     );
 
     // お知らせセクションが表示される（見出しとして）
-    const newsHeadings = screen.getAllByRole('heading', { name: /お知らせ/ });
+    const newsHeadings = screen.getAllByRole('heading', { name: /News/ });
     expect(newsHeadings.length).toBeGreaterThan(0);
   });
 
