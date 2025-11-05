@@ -52,6 +52,13 @@ export const INDUSTRY_CONFIG: Record<Industry, IndustryConfig> = {
     primaryColor: '#f59e0b', // amber-500
     accentColor: '#fb923c', // orange-400
   },
+  'tutorial-school': {
+    name: '学習塾',
+    description: '一人ひとりの夢を、確かな学力で支える',
+    heroImage: '/images/tutorial-school-hero.jpg',
+    primaryColor: '#10b981', // emerald-500
+    accentColor: '#3b82f6', // blue-500
+  },
   // 今後追加予定の業種設定例:
   // 'construction': {
   //   name: '建設業',

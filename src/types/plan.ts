@@ -23,6 +23,7 @@ export const INDUSTRIES = {
   USED_CAR: 'used-car',
   BEAUTY_SALON: 'beauty-salon',
   SCAFFOLDING: 'scaffolding',        // 足場・鳶職
+  TUTORIAL_SCHOOL: 'tutorial-school', // 学習塾
   // 今後追加予定:
   // CONSTRUCTION: 'construction',      // 建設業
   // RESTAURANT: 'restaurant',          // 飲食店
