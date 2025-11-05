@@ -74,6 +74,13 @@ export const INDUSTRY_CONFIG: Record<Industry, IndustryConfig> = {
     accentColor: '#d97706', // amber-600
     font: 'serif',
   },
+  'dining-bar': {
+    name: 'ダイニングバー',
+    description: '洗練された空間で、特別なひとときを',
+    heroImage: '/images/dining-bar-hero.jpg',
+    primaryColor: '#1e1b4b', // indigo-950
+    accentColor: '#c2410c', // orange-700
+  },
   // 今後追加予定の業種設定例:
   // 'construction': {
   //   name: '建設業',

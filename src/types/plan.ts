@@ -26,6 +26,7 @@ export const INDUSTRIES = {
   TUTORIAL_SCHOOL: 'tutorial-school', // 学習塾
   PET_SHOP: 'pet-shop',              // ペットショップ
   RYOKAN: 'ryokan',                  // 旅館
+  DINING_BAR: 'dining-bar',          // ダイニングバー
   // 今後追加予定:
   // CONSTRUCTION: 'construction',      // 建設業
   // RESTAURANT: 'restaurant',          // 飲食店
