@@ -57,7 +57,7 @@ export const RyokanPage = ({ companyInfo, plan }: RyokanPageProps) => {
   return (
     <BaseLayout companyInfo={companyInfo}>
       {/* ヒーローセクション - 和の雰囲気（スライドショー付き） */}
-      <section className="relative h-[600px] flex items-center justify-center overflow-hidden">
+      <section className="relative h-[600px] flex items-center overflow-hidden">
         {/* 背景画像スライドショー */}
         <div className="absolute inset-0">
           <AnimatePresence mode="wait">
@@ -100,7 +100,7 @@ export const RyokanPage = ({ companyInfo, plan }: RyokanPageProps) => {
 
         {/* コンテンツ */}
         <motion.div
-          className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto"
+          className="relative z-10 text-white px-4 md:px-12 max-w-7xl mx-auto w-full"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -117,7 +117,6 @@ export const RyokanPage = ({ companyInfo, plan }: RyokanPageProps) => {
             忘れられないひとときを
           </p>
           <motion.div
-            className="inline-block"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
