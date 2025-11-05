@@ -5,7 +5,6 @@ import { BlogPost } from '@/types/cms';
 import { BaseLayout } from './BaseLayout';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
 
 /**
  * BlogDetailPage コンポーネントのプロパティ
@@ -15,14 +14,15 @@ interface BlogDetailPageProps {
   companyInfo: CompanyInfo;
   /** ブログ記事 */
   post: BlogPost;
+  /** 一覧に戻るコールバック関数 */
+  onBack: () => void;
 }
 
 /**
  * ブログ記事の詳細ページコンポーネント
  * 記事の詳細情報を表示し、一覧への戻るボタンを提供
  */
-export const BlogDetailPage = ({ companyInfo, post }: BlogDetailPageProps) => {
-  const router = useRouter();
+export const BlogDetailPage = ({ companyInfo, post, onBack }: BlogDetailPageProps) => {
 
   return (
     <BaseLayout companyInfo={companyInfo}>
@@ -32,7 +32,7 @@ export const BlogDetailPage = ({ companyInfo, post }: BlogDetailPageProps) => {
           <motion.button
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            onClick={() => router.back()}
+            onClick={onBack}
             className="mb-8 text-blue-700 hover:text-blue-900 flex items-center gap-2 font-semibold"
           >
             ← 一覧に戻る
@@ -119,7 +119,7 @@ export const BlogDetailPage = ({ companyInfo, post }: BlogDetailPageProps) => {
               >
                 <div className="flex items-center justify-between">
                   <button
-                    onClick={() => router.back()}
+                    onClick={onBack}
                     className="text-blue-700 hover:text-blue-900 font-semibold flex items-center gap-2"
                   >
                     ← 一覧に戻る

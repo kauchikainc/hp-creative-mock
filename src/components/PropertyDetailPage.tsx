@@ -6,7 +6,6 @@ import { BaseLayout } from './BaseLayout';
 import { motion } from 'framer-motion';
 import { formatPrice, formatArea } from '@/lib/formatters';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
 
 /**
  * PropertyDetailPage コンポーネントのプロパティ
@@ -16,14 +15,15 @@ interface PropertyDetailPageProps {
   companyInfo: CompanyInfo;
   /** 物件情報 */
   property: Property;
+  /** 一覧に戻るコールバック関数 */
+  onBack: () => void;
 }
 
 /**
  * 不動産物件の詳細ページコンポーネント
  * 物件の詳細情報を表示し、お問い合わせや一覧への戻るボタンを提供
  */
-export const PropertyDetailPage = ({ companyInfo, property }: PropertyDetailPageProps) => {
-  const router = useRouter();
+export const PropertyDetailPage = ({ companyInfo, property, onBack }: PropertyDetailPageProps) => {
 
   return (
     <BaseLayout companyInfo={companyInfo}>
@@ -33,7 +33,7 @@ export const PropertyDetailPage = ({ companyInfo, property }: PropertyDetailPage
           <motion.button
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            onClick={() => router.back()}
+            onClick={onBack}
             className="mb-8 text-blue-700 hover:text-blue-900 flex items-center gap-2 font-semibold"
           >
             ← 一覧に戻る

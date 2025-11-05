@@ -5,7 +5,6 @@ import { Stylist } from '@/types/beauty-salon';
 import { BaseLayout } from './BaseLayout';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
 
 /**
  * StylistDetailPage コンポーネントのプロパティ
@@ -15,14 +14,15 @@ interface StylistDetailPageProps {
   companyInfo: CompanyInfo;
   /** スタイリスト情報 */
   stylist: Stylist;
+  /** 一覧に戻るコールバック関数 */
+  onBack: () => void;
 }
 
 /**
  * スタイリストの詳細ページコンポーネント
  * スタイリストのプロフィール、得意スタイル、経歴を表示
  */
-export const StylistDetailPage = ({ companyInfo, stylist }: StylistDetailPageProps) => {
-  const router = useRouter();
+export const StylistDetailPage = ({ companyInfo, stylist, onBack }: StylistDetailPageProps) => {
 
   return (
     <BaseLayout companyInfo={companyInfo}>
@@ -32,7 +32,7 @@ export const StylistDetailPage = ({ companyInfo, stylist }: StylistDetailPagePro
           <motion.button
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            onClick={() => router.back()}
+            onClick={onBack}
             className="mb-8 text-pink-600 hover:text-pink-800 flex items-center gap-2 font-semibold"
           >
             ← 一覧に戻る

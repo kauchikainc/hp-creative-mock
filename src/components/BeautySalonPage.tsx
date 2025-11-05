@@ -38,11 +38,23 @@ export const BeautySalonPage = ({ companyInfo, plan }: BeautySalonPageProps) => 
 
   // 詳細ページ表示中は詳細ページコンポーネントを返す
   if (selectedStylist) {
-    return <StylistDetailPage companyInfo={companyInfo} stylist={selectedStylist} />;
+    return (
+      <StylistDetailPage
+        companyInfo={companyInfo}
+        stylist={selectedStylist}
+        onBack={() => setSelectedStylist(null)}
+      />
+    );
   }
 
   if (selectedBlogPost) {
-    return <BlogDetailPage companyInfo={companyInfo} post={selectedBlogPost} />;
+    return (
+      <BlogDetailPage
+        companyInfo={companyInfo}
+        post={selectedBlogPost}
+        onBack={() => setSelectedBlogPost(null)}
+      />
+    );
   }
 
   return (

@@ -32,7 +32,13 @@ export const UsedCarPage = ({ companyInfo, plan }: UsedCarPageProps) => {
 
   // 詳細ページ表示中はBaseLayoutを使わず、詳細ページコンポーネントを直接表示
   if (selectedVehicle) {
-    return <VehicleDetailPage companyInfo={companyInfo} vehicle={selectedVehicle} />;
+    return (
+      <VehicleDetailPage
+        companyInfo={companyInfo}
+        vehicle={selectedVehicle}
+        onBack={() => setSelectedVehicle(null)}
+      />
+    );
   }
 
   return (

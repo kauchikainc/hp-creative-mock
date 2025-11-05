@@ -36,11 +36,23 @@ export const RealEstatePage = ({ companyInfo, plan }: RealEstatePageProps) => {
 
   // 詳細ページ表示中はBaseLayoutを使わず、詳細ページコンポーネントを直接表示
   if (selectedProperty) {
-    return <PropertyDetailPage companyInfo={companyInfo} property={selectedProperty} />;
+    return (
+      <PropertyDetailPage
+        companyInfo={companyInfo}
+        property={selectedProperty}
+        onBack={() => setSelectedProperty(null)}
+      />
+    );
   }
 
   if (selectedBlogPost) {
-    return <BlogDetailPage companyInfo={companyInfo} post={selectedBlogPost} />;
+    return (
+      <BlogDetailPage
+        companyInfo={companyInfo}
+        post={selectedBlogPost}
+        onBack={() => setSelectedBlogPost(null)}
+      />
+    );
   }
 
   return (

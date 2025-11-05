@@ -6,7 +6,6 @@ import { BaseLayout } from './BaseLayout';
 import { motion } from 'framer-motion';
 import { formatPrice } from '@/lib/formatters';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
 
 /**
  * VehicleDetailPage コンポーネントのプロパティ
@@ -16,14 +15,15 @@ interface VehicleDetailPageProps {
   companyInfo: CompanyInfo;
   /** 車両情報 */
   vehicle: Vehicle;
+  /** 一覧に戻るコールバック関数 */
+  onBack: () => void;
 }
 
 /**
  * 中古車両の詳細ページコンポーネント
  * 車両の詳細情報を表示し、お問い合わせや一覧への戻るボタンを提供
  */
-export const VehicleDetailPage = ({ companyInfo, vehicle }: VehicleDetailPageProps) => {
-  const router = useRouter();
+export const VehicleDetailPage = ({ companyInfo, vehicle, onBack }: VehicleDetailPageProps) => {
 
   return (
     <BaseLayout companyInfo={companyInfo}>
@@ -33,7 +33,7 @@ export const VehicleDetailPage = ({ companyInfo, vehicle }: VehicleDetailPagePro
           <motion.button
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            onClick={() => router.back()}
+            onClick={onBack}
             className="mb-8 text-red-600 hover:text-red-800 flex items-center gap-2 font-bold"
           >
             ← 一覧に戻る
