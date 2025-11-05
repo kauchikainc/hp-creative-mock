@@ -66,6 +66,14 @@ export const INDUSTRY_CONFIG: Record<Industry, IndustryConfig> = {
     primaryColor: '#f59e0b', // amber-500
     accentColor: '#ec4899', // pink-500
   },
+  'ryokan': {
+    name: '旅館',
+    description: '心からのおもてなしで、忘れられないひとときを',
+    heroImage: '/images/ryokan-hero.jpg',
+    primaryColor: '#059669', // emerald-600
+    accentColor: '#d97706', // amber-600
+    font: 'serif',
+  },
   // 今後追加予定の業種設定例:
   // 'construction': {
   //   name: '建設業',

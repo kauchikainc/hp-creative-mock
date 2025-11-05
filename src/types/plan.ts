@@ -25,6 +25,7 @@ export const INDUSTRIES = {
   SCAFFOLDING: 'scaffolding',        // 足場・鳶職
   TUTORIAL_SCHOOL: 'tutorial-school', // 学習塾
   PET_SHOP: 'pet-shop',              // ペットショップ
+  RYOKAN: 'ryokan',                  // 旅館
   // 今後追加予定:
   // CONSTRUCTION: 'construction',      // 建設業
   // RESTAURANT: 'restaurant',          // 飲食店
