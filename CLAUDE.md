@@ -172,6 +172,97 @@ import { motion } from 'framer-motion';
 
 **注意**: テストで`IntersectionObserver`のモックが必要（`jest.setup.js`に実装済み）
 
+### 7. 詳細ページの実装パターン（必須）
+
+**重要**: すべての業種において、以下の詳細ページ機能を実装すること。
+
+#### 実装必須要件
+
+1. **詳細ページコンポーネントの作成**
+   - 業種固有のコンテンツ（物件、車両、メニュー、施工事例など）に対する詳細ページコンポーネント
+   - ブログ記事詳細ページ（Premium機能）
+   - 各詳細ページには「一覧に戻る」ボタンを配置
+
+2. **状態管理による表示切り替え**
+   ```tsx
+   const [selectedItem, setSelectedItem] = useState<ItemType | null>(null);
+   const [selectedBlogPost, setSelectedBlogPost] = useState<BlogPost | null>(null);
+
+   // 詳細ページ表示中は詳細ページコンポーネントを返す
+   if (selectedItem) {
+     return <ItemDetailPage companyInfo={companyInfo} item={selectedItem} />;
+   }
+
+   if (selectedBlogPost) {
+     return <BlogDetailPage companyInfo={companyInfo} post={selectedBlogPost} />;
+   }
+   ```
+
+3. **カードコンポーネントへのクリックイベント追加**
+   ```tsx
+   <motion.div
+     onClick={() => setSelectedItem(item)}
+     className="cursor-pointer hover:shadow-lg transition-shadow"
+   >
+   ```
+
+4. **詳細ページコンポーネントの構成**
+   - BaseLayoutでラップ（Header/Footer表示）
+   - メイン画像の表示
+   - 詳細情報の表示（価格、仕様、説明など）
+   - アクションボタン（お問い合わせ、予約など）
+   - 戻るボタン（`useRouter().back()`を使用、ただし実際は状態をnullに戻す）
+
+5. **型定義**
+   - 業種固有のデータ型を`src/types/{industry}.ts`に定義
+   - BlogPost型は共通で`src/types/cms.ts`に定義済み
+
+6. **テストの作成**
+   - 詳細ページコンポーネントのテスト
+   - 必須項目の表示確認
+   - 戻るボタンの存在確認
+
+#### 実装例（不動産業種）
+
+```tsx
+// PropertyDetailPage.tsx
+export const PropertyDetailPage = ({ companyInfo, property }: Props) => {
+  const router = useRouter();
+
+  return (
+    <BaseLayout companyInfo={companyInfo}>
+      <div className="container mx-auto px-4 py-12">
+        <button onClick={() => router.back()}>← 一覧に戻る</button>
+        {/* 詳細情報 */}
+      </div>
+    </BaseLayout>
+  );
+};
+
+// RealEstatePage.tsx内
+const [selectedProperty, setSelectedProperty] = useState<Property | null>(null);
+
+if (selectedProperty) {
+  return <PropertyDetailPage companyInfo={companyInfo} property={selectedProperty} />;
+}
+
+// 物件カード
+<motion.div onClick={() => setSelectedProperty(property)}>
+```
+
+#### 業種別の詳細ページ対象
+
+- **不動産**: 物件詳細、ブログ詳細
+- **中古車**: 車両詳細
+- **美容院**: スタイリスト詳細、メニュー詳細、ギャラリー詳細、ブログ詳細
+- **足場**: 施工事例詳細、サービス詳細
+- **学習塾**: コース詳細、講師詳細、合格実績詳細
+- **ペットショップ**: ペット詳細、商品詳細、ブログ詳細
+- **旅館**: 客室詳細、プラン詳細、ブログ詳細
+- **ダイニングバー**: メニュー詳細、イベント詳細、ブログ詳細
+
+**注意**: 新しい業種を追加する際は、上記パターンに従って詳細ページ機能を必ず実装すること。
+
 ## ファイル構成
 
 ```

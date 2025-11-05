@@ -4,14 +4,19 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { BaseLayout } from './BaseLayout';
 import { PremiumFeatures } from './PremiumFeatures';
+import { StylistDetailPage } from './StylistDetailPage';
+import { BlogDetailPage } from './BlogDetailPage';
 import { CompanyInfo } from '@/types';
 import { Plan } from '@/types/plan';
+import { Stylist } from '@/types/beauty-salon';
+import { BlogPost } from '@/types/cms';
 import { MOCK_STYLISTS } from '@/data/beauty-salon/stylists';
 import { MOCK_MENUS } from '@/data/beauty-salon/menus';
 import { MOCK_GALLERY } from '@/data/beauty-salon/gallery';
 import { MOCK_REVIEWS } from '@/data/beauty-salon/reviews';
 import { MOCK_BLOG_POSTS } from '@/data/beauty-salon/blog';
 import { MOCK_NEWS } from '@/data/beauty-salon/news';
+import { useState } from 'react';
 
 /**
  * BeautySalonPageのprops
@@ -28,6 +33,18 @@ interface BeautySalonPageProps {
  * エレガント・洗練されたデザインで、美しさと品質を重視
  */
 export const BeautySalonPage = ({ companyInfo, plan }: BeautySalonPageProps) => {
+  const [selectedStylist, setSelectedStylist] = useState<Stylist | null>(null);
+  const [selectedBlogPost, setSelectedBlogPost] = useState<BlogPost | null>(null);
+
+  // 詳細ページ表示中は詳細ページコンポーネントを返す
+  if (selectedStylist) {
+    return <StylistDetailPage companyInfo={companyInfo} stylist={selectedStylist} />;
+  }
+
+  if (selectedBlogPost) {
+    return <BlogDetailPage companyInfo={companyInfo} post={selectedBlogPost} />;
+  }
+
   return (
     <BaseLayout companyInfo={companyInfo}>
       {/* ヒーローセクション - 柔らかいグラデーションと優雅なレイアウト */}
@@ -212,7 +229,8 @@ export const BeautySalonPage = ({ companyInfo, plan }: BeautySalonPageProps) => 
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className="group"
+                  onClick={() => setSelectedStylist(stylist)}
+                  className="group cursor-pointer"
                 >
                   <div className="relative h-72 mb-4 overflow-hidden rounded-3xl">
                     <Image
@@ -363,7 +381,8 @@ export const BeautySalonPage = ({ companyInfo, plan }: BeautySalonPageProps) => 
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all group"
+                  onClick={() => setSelectedBlogPost(post)}
+                  className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all group cursor-pointer"
                 >
                   <div className="relative h-56 overflow-hidden">
                     <Image
