@@ -4,8 +4,9 @@ import { CompanyInfo } from '@/types';
 import { Plan } from '@/types/plan';
 import { BaseLayout } from './BaseLayout';
 import { PremiumFeatures } from './PremiumFeatures';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
+import { useState, useEffect } from 'react';
 
 /**
  * RyokanPage コンポーネントのプロパティ
@@ -22,21 +23,79 @@ interface RyokanPageProps {
  * 和の雰囲気とおもてなしの心を表現したデザイン
  */
 export const RyokanPage = ({ companyInfo, plan }: RyokanPageProps) => {
+  // スライドショーの状態管理
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  // ヒーローセクションのスライド画像
+  const heroSlides = [
+    {
+      image: 'https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=1600&q=80',
+      alt: '旅館外観',
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1590073242678-70ee3fc28e8e?w=1600&q=80',
+      alt: '客室内観',
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1600&q=80',
+      alt: '露天風呂',
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1595846519845-68e298c2edd8?w=1600&q=80',
+      alt: '和室',
+    },
+  ];
+
+  // 自動スライドショー（5秒ごと）
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [heroSlides.length]);
+
   return (
     <BaseLayout companyInfo={companyInfo}>
-      {/* ヒーローセクション - 和の雰囲気 */}
+      {/* ヒーローセクション - 和の雰囲気（スライドショー付き） */}
       <section className="relative h-[600px] flex items-center justify-center overflow-hidden">
-        {/* 背景画像 */}
+        {/* 背景画像スライドショー */}
         <div className="absolute inset-0">
-          <Image
-            src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=1600&q=80"
-            alt="旅館外観"
-            fill
-            className="object-cover"
-            priority
-          />
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentSlide}
+              className="absolute inset-0"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1.2 }}
+            >
+              <Image
+                src={heroSlides[currentSlide].image}
+                alt={heroSlides[currentSlide].alt}
+                fill
+                className="object-cover"
+                priority={currentSlide === 0}
+              />
+            </motion.div>
+          </AnimatePresence>
           {/* グラデーションオーバーレイ */}
           <div className="absolute inset-0 bg-gradient-to-r from-emerald-900/80 via-emerald-800/70 to-transparent" />
+        </div>
+
+        {/* スライドインジケーター */}
+        <div className="absolute bottom-8 left-0 right-0 z-20 flex justify-center gap-3">
+          {heroSlides.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentSlide(index)}
+              className={`w-3 h-3 rounded-full transition-all ${
+                index === currentSlide
+                  ? 'bg-amber-500 w-8'
+                  : 'bg-white/50 hover:bg-white/80'
+              }`}
+              aria-label={`スライド${index + 1}へ移動`}
+            />
+          ))}
         </div>
 
         {/* コンテンツ */}
