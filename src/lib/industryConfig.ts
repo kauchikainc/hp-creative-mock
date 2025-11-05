@@ -59,6 +59,13 @@ export const INDUSTRY_CONFIG: Record<Industry, IndustryConfig> = {
     primaryColor: '#10b981', // emerald-500
     accentColor: '#3b82f6', // blue-500
   },
+  'pet-shop': {
+    name: 'ペットショップ',
+    description: '大切な家族との出会いをお手伝い',
+    heroImage: '/images/pet-shop-hero.jpg',
+    primaryColor: '#f59e0b', // amber-500
+    accentColor: '#ec4899', // pink-500
+  },
   // 今後追加予定の業種設定例:
   // 'construction': {
   //   name: '建設業',
