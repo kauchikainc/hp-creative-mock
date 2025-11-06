@@ -80,6 +80,11 @@ describe('GynecologySalonPage', () => {
       const doctorSection = screen.getByText('医師紹介');
       expect(doctorSection).toBeInTheDocument();
     });
+
+    test('お客様の声セクションが表示される', () => {
+      render(<GynecologySalonPage companyInfo={mockCompanyInfo} plan="premium" />);
+      expect(screen.getByText('お客様の声')).toBeInTheDocument();
+    });
   });
 
   describe('Standard プランでPremium機能が表示されない', () => {
@@ -101,6 +106,11 @@ describe('GynecologySalonPage', () => {
     test('お知らせセクションが表示されない', () => {
       render(<GynecologySalonPage companyInfo={mockCompanyInfo} plan="standard" />);
       expect(screen.queryByText('お知らせ')).not.toBeInTheDocument();
+    });
+
+    test('お客様の声セクションが表示されない', () => {
+      render(<GynecologySalonPage companyInfo={mockCompanyInfo} plan="standard" />);
+      expect(screen.queryByText('お客様の声')).not.toBeInTheDocument();
     });
   });
 });
