@@ -263,6 +263,200 @@ if (selectedProperty) {
 
 **注意**: 新しい業種を追加する際は、上記パターンに従って詳細ページ機能を必ず実装すること。
 
+### 8. インタラクション機能の実装（必須）
+
+**重要**: すべての業種において、以下のインタラクション機能を実装すること。
+
+#### 実装必須のインタラクション
+
+1. **お問い合わせフォーム**
+   - 全業種で共通コンポーネント `ContactForm.tsx` を作成
+   - フォーム項目: 名前、会社名、メール、電話、お問い合わせ種別、内容
+   - バリデーション（必須項目チェック）
+   - 送信完了画面の表示
+   - 戻るボタンで元のページに戻る
+
+2. **お知らせ・ニュース詳細ページ**（Premium機能）
+   - お知らせ一覧からクリックで詳細ページへ遷移
+   - 詳細ページコンポーネント: `NewsDetailPage.tsx`
+   - タイトル、カテゴリー、日付、本文、画像を表示
+   - 戻るボタンで一覧に戻る
+
+3. **ナビゲーションバーからの自動スクロール**
+   - Headerのナビゲーションリンクをクリック
+   - 対応するセクションまでスムーススクロール
+   - 実装例:
+     ```tsx
+     <a
+       href="#services"
+       onClick={(e) => {
+         e.preventDefault();
+         document.getElementById('services')?.scrollIntoView({
+           behavior: 'smooth',
+           block: 'start',
+         });
+       }}
+     >
+       サービス案内
+     </a>
+     ```
+
+4. **CTAボタンのアクション**
+   - 「お問い合わせ」ボタン → お問い合わせフォーム表示
+   - 「サービス案内」ボタン → サービスセクションへスクロール
+   - 「詳細を見る」ボタン → 詳細ページ表示
+   - すべてのボタンに適切な `onClick` ハンドラーを設定
+
+#### 実装パターン
+
+**状態管理**:
+```tsx
+const [showContactForm, setShowContactForm] = useState(false);
+const [selectedNews, setSelectedNews] = useState<NewsItem | null>(null);
+const [selectedItem, setSelectedItem] = useState<ItemType | null>(null);
+```
+
+**条件分岐による画面切り替え**:
+```tsx
+// お問い合わせフォーム表示中
+if (showContactForm) {
+  return <ContactForm companyInfo={companyInfo} onBack={() => setShowContactForm(false)} />;
+}
+
+// お知らせ詳細表示中
+if (selectedNews) {
+  return <NewsDetailPage companyInfo={companyInfo} news={selectedNews} onBack={() => setSelectedNews(null)} />;
+}
+
+// 詳細ページ表示中
+if (selectedItem) {
+  return <ItemDetailPage companyInfo={companyInfo} item={selectedItem} onBack={() => setSelectedItem(null)} />;
+}
+
+// メインページ
+return <BaseLayout>...</BaseLayout>;
+```
+
+**お問い合わせボタンの実装**:
+```tsx
+<motion.button
+  whileHover={{ scale: 1.05 }}
+  whileTap={{ scale: 0.95 }}
+  onClick={() => setShowContactForm(true)}
+  className="px-8 py-4 bg-white text-cyan-700 rounded-lg font-bold"
+>
+  お問い合わせ
+</motion.button>
+```
+
+**お知らせリストのクリックイベント**:
+```tsx
+<motion.div
+  onClick={() => setSelectedNews(newsItem)}
+  className="cursor-pointer hover:bg-gray-50 transition-colors"
+>
+  {newsItem.title}
+</motion.div>
+```
+
+#### 業種ごとの必須インタラクション
+
+すべての業種で以下を実装:
+- ✅ お問い合わせフォーム（複数箇所からアクセス可能）
+- ✅ ナビゲーションバーからのスムーススクロール
+- ✅ 詳細ページへの遷移（商品、物件、サービスなど）
+- ✅ ブログ詳細ページ（Premium機能）
+- ✅ お知らせ詳細ページ（Premium機能）
+- ✅ 戻るボタンによる画面遷移
+
+#### ContactFormコンポーネントの仕様
+
+**共通仕様**:
+```tsx
+interface ContactFormProps {
+  companyInfo: CompanyInfo;
+  onBack: () => void;
+}
+```
+
+**フォーム項目**:
+- お名前（必須）
+- 会社名・団体名（任意）
+- メールアドレス（必須）
+- 電話番号（任意）
+- お問い合わせ種別（必須、業種ごとにカスタマイズ）
+- お問い合わせ内容（必須）
+
+**デザイン要件**:
+- グラデーション背景
+- 業種のプライマリーカラーを使用
+- フォーカス時のリングカラーは業種カラー
+- 送信完了画面にチェックマークアイコン
+- アニメーション付きボタン
+
+#### NewsDetailPageコンポーネントの仕様
+
+**共通仕様**:
+```tsx
+interface NewsDetailPageProps {
+  companyInfo: CompanyInfo;
+  news: NewsItem;
+  onBack: () => void;
+}
+```
+
+**NewsItem型**:
+```tsx
+interface NewsItem {
+  id: string;
+  date: string;
+  category: string;
+  title: string;
+  content: string;  // 詳細本文（\nで改行）
+  imageUrl?: string;
+}
+```
+
+**デザイン要件**:
+- 戻るボタン（左上）
+- カテゴリーバッジ + 日付
+- 大きな見出し
+- メイン画像（ある場合）
+- 本文（改行対応）
+- 関連リンク（お問い合わせへの導線）
+
+#### テストの追加
+
+インタラクション機能を実装した場合、以下のテストを追加:
+```typescript
+test('お問い合わせボタンをクリックするとフォームが表示される', () => {
+  // テスト実装
+});
+
+test('お知らせをクリックすると詳細ページが表示される', () => {
+  // テスト実装
+});
+
+test('戻るボタンで元のページに戻る', () => {
+  // テスト実装
+});
+```
+
+#### 実装チェックリスト
+
+新しい業種を追加する際は、以下をすべて実装すること:
+- [ ] ContactFormコンポーネントの作成（または共通コンポーネントの利用）
+- [ ] お問い合わせボタンのクリックイベント（ヒーロー、CTAセクション）
+- [ ] NewsDetailPageコンポーネントの作成
+- [ ] お知らせ一覧のクリックイベント
+- [ ] ナビゲーションバーのスムーススクロール
+- [ ] 詳細ページへの遷移（商品、サービス等）
+- [ ] すべての戻るボタンの実装
+- [ ] 状態管理による画面切り替え
+- [ ] インタラクションのテスト作成
+
+**注意**: これらのインタラクション機能は、モックサイトをリアルに見せるために必須です。実装を省略しないこと。
+
 ## ファイル構成
 
 ```

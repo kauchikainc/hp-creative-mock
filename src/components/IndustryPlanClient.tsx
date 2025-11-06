@@ -10,6 +10,7 @@ import { TutorialSchoolPage } from './TutorialSchoolPage';
 import { PetShopPage } from './PetShopPage';
 import { RyokanPage } from './RyokanPage';
 import { DiningBarPage } from './DiningBarPage';
+import { CleaningServicePage } from './CleaningServicePage';
 import { notFound } from 'next/navigation';
 
 /**
@@ -63,6 +64,9 @@ export const IndustryPlanClient = ({ industry, plan }: IndustryPlanClientProps) 
 
     case INDUSTRIES.DINING_BAR:
       return <DiningBarPage companyInfo={companyInfo} plan={plan} />;
+
+    case INDUSTRIES.CLEANING_SERVICE:
+      return <CleaningServicePage companyInfo={companyInfo} plan={plan} />;
 
     default:
       notFound();

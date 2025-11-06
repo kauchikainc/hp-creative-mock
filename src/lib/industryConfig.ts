@@ -81,6 +81,13 @@ export const INDUSTRY_CONFIG: Record<Industry, IndustryConfig> = {
     primaryColor: '#1e1b4b', // indigo-950
     accentColor: '#c2410c', // orange-700
   },
+  'cleaning-service': {
+    name: '清掃・廃棄物処理',
+    description: 'クリーンな環境づくりで、持続可能な社会を実現',
+    heroImage: '/images/cleaning-service-hero.jpg',
+    primaryColor: '#0891b2', // cyan-600
+    accentColor: '#06b6d4', // cyan-500
+  },
   // 今後追加予定の業種設定例:
   // 'construction': {
   //   name: '建設業',
