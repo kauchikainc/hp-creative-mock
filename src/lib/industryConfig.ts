@@ -88,6 +88,14 @@ export const INDUSTRY_CONFIG: Record<Industry, IndustryConfig> = {
     primaryColor: '#0891b2', // cyan-600
     accentColor: '#06b6d4', // cyan-500
   },
+  'gynecology-salon': {
+    name: '婦人科サロン',
+    description: '女性のための安心できる専門医療',
+    heroImage: '/images/gynecology-salon-hero.jpg',
+    primaryColor: '#f472b6', // pink-400
+    accentColor: '#c084fc', // purple-400
+    font: 'serif',
+  },
   // 今後追加予定の業種設定例:
   // 'construction': {
   //   name: '建設業',

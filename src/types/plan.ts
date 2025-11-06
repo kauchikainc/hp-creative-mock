@@ -28,6 +28,7 @@ export const INDUSTRIES = {
   RYOKAN: 'ryokan',                  // 旅館
   DINING_BAR: 'dining-bar',          // ダイニングバー
   CLEANING_SERVICE: 'cleaning-service', // 清掃・廃棄物処理
+  GYNECOLOGY_SALON: 'gynecology-salon', // 婦人科サロン
   // 今後追加予定:
   // CONSTRUCTION: 'construction',      // 建設業
   // RESTAURANT: 'restaurant',          // 飲食店
