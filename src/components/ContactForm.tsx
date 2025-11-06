@@ -13,6 +13,8 @@ interface ContactFormProps {
   companyInfo: CompanyInfo;
   /** 戻るボタンのコールバック */
   onBack: () => void;
+  /** 業種（問い合わせ種別とカラーのカスタマイズ用） */
+  industry?: string;
 }
 
 /**
@@ -21,7 +23,7 @@ interface ContactFormProps {
  * お問い合わせ内容を入力するフォーム。
  * 実際の送信機能は実装されていないモック。
  */
-export const ContactForm = ({ companyInfo, onBack }: ContactFormProps) => {
+export const ContactForm = ({ companyInfo, onBack, industry = 'cleaning-service' }: ContactFormProps) => {
   const [formData, setFormData] = useState({
     name: '',
     company: '',
@@ -32,6 +34,46 @@ export const ContactForm = ({ companyInfo, onBack }: ContactFormProps) => {
   });
 
   const [submitted, setSubmitted] = useState(false);
+
+  // 業種ごとの問い合わせ種別
+  const subjectOptions: Record<string, { value: string; label: string }[]> = {
+    'cleaning-service': [
+      { value: 'office', label: 'オフィス清掃について' },
+      { value: 'commercial', label: '商業施設清掃について' },
+      { value: 'medical', label: '医療施設清掃について' },
+      { value: 'industrial', label: '産業廃棄物処理について' },
+      { value: 'general', label: '一般廃棄物収集運搬について' },
+      { value: 'recycling', label: 'リサイクル処理について' },
+      { value: 'estimate', label: 'お見積もり依頼' },
+      { value: 'other', label: 'その他' },
+    ],
+    'gynecology-salon': [
+      { value: 'appointment', label: 'ご予約' },
+      { value: 'consultation', label: '診療相談' },
+      { value: 'menstruation', label: '月経トラブルについて' },
+      { value: 'menopause', label: '更年期について' },
+      { value: 'checkup', label: '検診について' },
+      { value: 'infertility', label: '不妊相談' },
+      { value: 'other', label: 'その他' },
+    ],
+  };
+
+  // 業種ごとのカラー設定
+  const colorSchemes: Record<string, { primary: string; secondary: string; focus: string }> = {
+    'cleaning-service': {
+      primary: 'from-cyan-600 to-teal-600',
+      secondary: 'from-cyan-50 to-teal-50',
+      focus: 'focus:ring-cyan-500',
+    },
+    'gynecology-salon': {
+      primary: 'from-pink-400 to-purple-400',
+      secondary: 'from-pink-50 to-purple-50',
+      focus: 'focus:ring-pink-400',
+    },
+  };
+
+  const currentSubjects = subjectOptions[industry] || subjectOptions['cleaning-service'];
+  const currentColors = colorSchemes[industry] || colorSchemes['cleaning-service'];
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
@@ -56,7 +98,7 @@ export const ContactForm = ({ companyInfo, onBack }: ContactFormProps) => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.4 }}
             onClick={onBack}
-            className="flex items-center text-cyan-600 hover:text-cyan-700 mb-8 transition-colors"
+            className={`flex items-center ${industry === 'gynecology-salon' ? 'text-pink-600 hover:text-pink-700' : 'text-cyan-600 hover:text-cyan-700'} mb-8 transition-colors`}
           >
             <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -93,7 +135,7 @@ export const ContactForm = ({ companyInfo, onBack }: ContactFormProps) => {
                       required
                       value={formData.name}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all"
+                      className={`w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 ${currentColors.focus} focus:border-transparent transition-all`}
                       placeholder="山田 太郎"
                     />
                   </div>
@@ -109,7 +151,7 @@ export const ContactForm = ({ companyInfo, onBack }: ContactFormProps) => {
                       name="company"
                       value={formData.company}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all"
+                      className={`w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 ${currentColors.focus} focus:border-transparent transition-all`}
                       placeholder="株式会社サンプル"
                     />
                   </div>
@@ -126,7 +168,7 @@ export const ContactForm = ({ companyInfo, onBack }: ContactFormProps) => {
                       required
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all"
+                      className={`w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 ${currentColors.focus} focus:border-transparent transition-all`}
                       placeholder="example@example.com"
                     />
                   </div>
@@ -142,7 +184,7 @@ export const ContactForm = ({ companyInfo, onBack }: ContactFormProps) => {
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all"
+                      className={`w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 ${currentColors.focus} focus:border-transparent transition-all`}
                       placeholder="03-1234-5678"
                     />
                   </div>
@@ -158,17 +200,14 @@ export const ContactForm = ({ companyInfo, onBack }: ContactFormProps) => {
                       required
                       value={formData.subject}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all"
+                      className={`w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 ${currentColors.focus} focus:border-transparent transition-all`}
                     >
                       <option value="">選択してください</option>
-                      <option value="office">オフィス清掃について</option>
-                      <option value="commercial">商業施設清掃について</option>
-                      <option value="medical">医療施設清掃について</option>
-                      <option value="industrial">産業廃棄物処理について</option>
-                      <option value="general">一般廃棄物収集運搬について</option>
-                      <option value="recycling">リサイクル処理について</option>
-                      <option value="estimate">お見積もり依頼</option>
-                      <option value="other">その他</option>
+                      {currentSubjects.map((option) => (
+                        <option key={option.value} value={option.value}>
+                          {option.label}
+                        </option>
+                      ))}
                     </select>
                   </div>
 
@@ -195,7 +234,7 @@ export const ContactForm = ({ companyInfo, onBack }: ContactFormProps) => {
                       type="submit"
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className="w-full bg-gradient-to-r from-cyan-600 to-teal-600 text-white py-4 rounded-lg font-bold text-lg shadow-lg hover:shadow-xl transition-all"
+                      className={`w-full bg-gradient-to-r ${currentColors.primary} text-white py-4 rounded-lg font-bold text-lg shadow-lg hover:shadow-xl transition-all`}
                     >
                       送信する
                     </motion.button>
@@ -216,8 +255,8 @@ export const ContactForm = ({ companyInfo, onBack }: ContactFormProps) => {
               transition={{ duration: 0.5 }}
               className="text-center py-20"
             >
-              <div className="inline-block p-6 bg-gradient-to-br from-cyan-50 to-teal-50 rounded-full mb-6">
-                <svg className="w-16 h-16 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className={`inline-block p-6 bg-gradient-to-br ${currentColors.secondary} rounded-full mb-6`}>
+                <svg className={`w-16 h-16 ${industry === 'gynecology-salon' ? 'text-pink-600' : 'text-cyan-600'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
               </div>
@@ -230,7 +269,7 @@ export const ContactForm = ({ companyInfo, onBack }: ContactFormProps) => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={onBack}
-                className="px-8 py-3 bg-gradient-to-r from-cyan-600 to-teal-600 text-white rounded-lg font-bold shadow-lg hover:shadow-xl transition-all"
+                className={`px-8 py-3 bg-gradient-to-r ${currentColors.primary} text-white rounded-lg font-bold shadow-lg hover:shadow-xl transition-all`}
               >
                 トップに戻る
               </motion.button>

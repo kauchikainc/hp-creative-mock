@@ -11,6 +11,7 @@ import { PetShopPage } from './PetShopPage';
 import { RyokanPage } from './RyokanPage';
 import { DiningBarPage } from './DiningBarPage';
 import { CleaningServicePage } from './CleaningServicePage';
+import { GynecologySalonPage } from './GynecologySalonPage';
 import { notFound } from 'next/navigation';
 
 /**
@@ -67,6 +68,9 @@ export const IndustryPlanClient = ({ industry, plan }: IndustryPlanClientProps) 
 
     case INDUSTRIES.CLEANING_SERVICE:
       return <CleaningServicePage companyInfo={companyInfo} plan={plan} />;
+
+    case INDUSTRIES.GYNECOLOGY_SALON:
+      return <GynecologySalonPage companyInfo={companyInfo} plan={plan} />;
 
     default:
       notFound();

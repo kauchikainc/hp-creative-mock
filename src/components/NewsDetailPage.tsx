@@ -15,6 +15,8 @@ interface NewsDetailPageProps {
   news: NewsItem;
   /** 戻るボタンのコールバック */
   onBack: () => void;
+  /** プライマリーカラー（オプション） */
+  primaryColor?: string;
 }
 
 /**
@@ -22,7 +24,7 @@ interface NewsDetailPageProps {
  *
  * お知らせの詳細内容を表示。
  */
-export const NewsDetailPage = ({ companyInfo, news, onBack }: NewsDetailPageProps) => {
+export const NewsDetailPage = ({ companyInfo, news, onBack, primaryColor = 'cyan-600' }: NewsDetailPageProps) => {
   return (
     <BaseLayout companyInfo={companyInfo}>
       <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white py-12">
@@ -33,7 +35,7 @@ export const NewsDetailPage = ({ companyInfo, news, onBack }: NewsDetailPageProp
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.4 }}
             onClick={onBack}
-            className="flex items-center text-cyan-600 hover:text-cyan-700 mb-8 transition-colors"
+            className={`flex items-center text-${primaryColor} hover:text-${primaryColor.replace('400', '500')} mb-8 transition-colors`}
           >
             <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
