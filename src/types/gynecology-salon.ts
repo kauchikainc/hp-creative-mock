@@ -56,3 +56,17 @@ export interface NewsItem {
   content: string;
   imageUrl?: string;
 }
+
+/**
+ * お客様の声
+ */
+export interface Testimonial {
+  id: string;
+  name: string;
+  age: string;
+  imageUrl: string;
+  rating: number;
+  comment: string;
+  treatment: string;
+  date: string;
+}

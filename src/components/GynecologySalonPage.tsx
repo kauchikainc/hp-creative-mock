@@ -6,7 +6,7 @@ import { BaseLayout } from './BaseLayout';
 import { PremiumFeatures } from './PremiumFeatures';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
-import { TreatmentMenu, Doctor, CaseStudy, NewsItem } from '@/types/gynecology-salon';
+import { TreatmentMenu, Doctor, CaseStudy, NewsItem, Testimonial } from '@/types/gynecology-salon';
 import { ContactForm } from './ContactForm';
 import { NewsDetailPage } from './NewsDetailPage';
 
@@ -206,6 +206,39 @@ export const GynecologySalonPage = ({ companyInfo, plan }: GynecologySalonPagePr
       category: 'menopause',
       date: '2024-10-25',
       imageUrl: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&q=80',
+    },
+  ];
+
+  const testimonials: Testimonial[] = [
+    {
+      id: '1',
+      name: '田中 美穂様',
+      age: '30代',
+      imageUrl: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80',
+      rating: 5,
+      comment: '長年悩んでいた月経痛が、こちらで治療を受けてから驚くほど改善しました。女性医師の先生が親身に話を聞いてくださり、安心して相談できました。',
+      treatment: '月経トラブル治療',
+      date: '2024年10月',
+    },
+    {
+      id: '2',
+      name: '佐藤 恵子様',
+      age: '40代',
+      imageUrl: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&q=80',
+      rating: 5,
+      comment: '更年期の症状で悩んでいましたが、ホルモン補充療法を始めてから体調が安定しました。先生の丁寧な説明とサポートに感謝しています。',
+      treatment: '更年期相談',
+      date: '2024年9月',
+    },
+    {
+      id: '3',
+      name: '山本 由美様',
+      age: '20代',
+      imageUrl: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=400&q=80',
+      rating: 5,
+      comment: 'ブライダルチェックを受けました。結婚前の不安を丁寧に解消してくださり、安心して次のステップに進むことができました。',
+      treatment: 'ブライダルチェック',
+      date: '2024年8月',
     },
   ];
 
@@ -775,6 +808,74 @@ export const GynecologySalonPage = ({ companyInfo, plan }: GynecologySalonPagePr
                 ))}
               </div>
             </motion.div>
+          </div>
+        </section>
+      </PremiumFeatures>
+
+      {/* Premium機能：お客様の声 */}
+      <PremiumFeatures plan={plan}>
+        <section id="testimonials" className="py-20 bg-white">
+          <div className="container mx-auto px-4">
+            <motion.div
+              initial={{ opacity: 0, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true, amount: 0.3 }}
+              className="text-center mb-16"
+            >
+              <h2 className="text-4xl md:text-5xl font-serif font-bold text-gray-800 mb-4">
+                お客様の声
+              </h2>
+              <div className="w-24 h-1 bg-gradient-to-r from-pink-400 to-purple-400 mx-auto rounded-full" />
+              <p className="text-gray-600 mt-4">
+                当院で治療を受けられた患者様からのお声をご紹介します
+              </p>
+            </motion.div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+              {testimonials.map((testimonial, index) => (
+                <motion.div
+                  key={testimonial.id}
+                  initial={{ opacity: 0, y: 60 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.2 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  className="bg-gradient-to-br from-pink-50 to-purple-50 rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all"
+                >
+                  <div className="flex items-center mb-6">
+                    <img
+                      src={testimonial.imageUrl}
+                      alt={testimonial.name}
+                      className="w-16 h-16 rounded-full object-cover mr-4"
+                    />
+                    <div>
+                      <h3 className="font-bold text-gray-800">{testimonial.name}</h3>
+                      <p className="text-sm text-gray-600">{testimonial.age}</p>
+                    </div>
+                  </div>
+                  <div className="flex mb-4">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <svg
+                        key={i}
+                        className="w-5 h-5 text-yellow-400 fill-current"
+                        viewBox="0 0 20 20"
+                      >
+                        <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                      </svg>
+                    ))}
+                  </div>
+                  <p className="text-gray-700 mb-6 leading-relaxed italic">
+                    &quot;{testimonial.comment}&quot;
+                  </p>
+                  <div className="border-t border-pink-200 pt-4">
+                    <p className="text-sm text-gray-600">
+                      <span className="font-bold">施術内容：</span>
+                      {testimonial.treatment}
+                    </p>
+                    <p className="text-sm text-gray-500 mt-1">{testimonial.date}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </section>
       </PremiumFeatures>
