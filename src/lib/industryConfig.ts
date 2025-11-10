@@ -96,6 +96,13 @@ export const INDUSTRY_CONFIG: Record<Industry, IndustryConfig> = {
     accentColor: '#c084fc', // purple-400
     font: 'serif',
   },
+  'cafe': {
+    name: 'カフェ',
+    description: 'くつろぎのひとときと、こだわりの一杯を',
+    heroImage: '/images/cafe-hero.jpg',
+    primaryColor: '#92400e', // amber-800
+    accentColor: '#d97706', // amber-600
+  },
   // 今後追加予定の業種設定例:
   // 'construction': {
   //   name: '建設業',
