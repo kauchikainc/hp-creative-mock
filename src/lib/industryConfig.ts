@@ -110,6 +110,13 @@ export const INDUSTRY_CONFIG: Record<Industry, IndustryConfig> = {
     primaryColor: '#06b6d4', // cyan-500
     accentColor: '#8b5cf6', // violet-500
   },
+  'vacation-rental-casual': {
+    name: '民泊(大衆)',
+    description: 'おうちのようにくつろげる、アットホームな宿',
+    heroImage: '/images/vacation-rental-casual-hero.jpg',
+    primaryColor: '#f97316', // orange-500
+    accentColor: '#fbbf24', // amber-400
+  },
   // 今後追加予定の業種設定例:
   // 'construction': {
   //   name: '建設業',
