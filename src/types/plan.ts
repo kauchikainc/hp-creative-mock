@@ -30,6 +30,7 @@ export const INDUSTRIES = {
   CLEANING_SERVICE: 'cleaning-service', // 清掃・廃棄物処理
   GYNECOLOGY_SALON: 'gynecology-salon', // 婦人科サロン
   CAFE: 'cafe',                      // カフェ
+  VACATION_RENTAL: 'vacation-rental', // 民泊
   // 今後追加予定:
   // CONSTRUCTION: 'construction',      // 建設業
   // RESTAURANT: 'restaurant',          // 飲食店
