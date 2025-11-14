@@ -13,6 +13,7 @@ import { DiningBarPage } from './DiningBarPage';
 import { CleaningServicePage } from './CleaningServicePage';
 import { GynecologySalonPage } from './GynecologySalonPage';
 import { CafePage } from './CafePage';
+import { VacationRentalPage } from './VacationRentalPage';
 import { notFound } from 'next/navigation';
 
 /**
@@ -75,6 +76,9 @@ export const IndustryPlanClient = ({ industry, plan }: IndustryPlanClientProps) 
 
     case INDUSTRIES.CAFE:
       return <CafePage companyInfo={companyInfo} plan={plan} />;
+
+    case INDUSTRIES.VACATION_RENTAL:
+      return <VacationRentalPage companyInfo={companyInfo} plan={plan} />;
 
     default:
       notFound();

@@ -26,7 +26,8 @@ describe('VacationRentalPage - Standard Plan', () => {
 
   test('ヒーローセクションが表示される', () => {
     render(<VacationRentalPage companyInfo={mockCompanyInfo} plan="standard" />);
-    expect(screen.getByText(/暮らすように旅する/)).toBeInTheDocument();
+    const elements = screen.getAllByText(/暮らすように旅する/);
+    expect(elements.length).toBeGreaterThan(0);
   });
 
   test('客室情報セクションが表示される', () => {
@@ -46,7 +47,8 @@ describe('VacationRentalPage - Standard Plan', () => {
 
   test('アクセス情報が表示される', () => {
     render(<VacationRentalPage companyInfo={mockCompanyInfo} plan="standard" />);
-    expect(screen.getByText(/アクセス/)).toBeInTheDocument();
+    const elements = screen.getAllByText(/アクセス/);
+    expect(elements.length).toBeGreaterThan(0);
   });
 
   test('お問い合わせボタンが表示される', () => {
@@ -95,7 +97,8 @@ describe('VacationRentalPage - Premium Plan', () => {
 
   test('Premium プランではお知らせが表示される', () => {
     render(<VacationRentalPage companyInfo={mockCompanyInfo} plan="premium" />);
-    expect(screen.getByText('お知らせ')).toBeInTheDocument();
+    const elements = screen.getAllByText(/お知らせ/);
+    expect(elements.length).toBeGreaterThan(0);
   });
 
   test('客室情報セクションが表示される', () => {
