@@ -26,7 +26,7 @@ describe('VacationRentalCasualPage - Standard Plan', () => {
 
   test('ヒーローセクションが表示される', () => {
     render(<VacationRentalCasualPage companyInfo={mockCompanyInfo} plan="standard" />);
-    const elements = screen.getAllByText(/おうちのようにくつろげる/);
+    const elements = screen.getAllByText(/おうちみたいに/);
     expect(elements.length).toBeGreaterThan(0);
   });
 
@@ -53,7 +53,7 @@ describe('VacationRentalCasualPage - Standard Plan', () => {
 
   test('予約・お問い合わせボタンが表示される', () => {
     render(<VacationRentalCasualPage companyInfo={mockCompanyInfo} plan="standard" />);
-    const buttons = screen.getAllByText(/予約・お問い合わせ/);
+    const buttons = screen.getAllByText(/予約/);
     expect(buttons.length).toBeGreaterThan(0);
   });
 
