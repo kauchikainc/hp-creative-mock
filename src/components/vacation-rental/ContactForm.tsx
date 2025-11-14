@@ -227,22 +227,6 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                 送信いただいた情報は、お問い合わせ対応にのみ使用いたします。
               </p>
             </motion.form>
-
-            {/* 直接連絡 */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="mt-12 text-center"
-            >
-              <p className="text-gray-600 mb-4">お急ぎの方は、お電話でもお問い合わせいただけます</p>
-              <a
-                href={`tel:${companyInfo.phoneNumber}`}
-                className="inline-block px-8 py-4 bg-white border-2 border-cyan-500 text-cyan-600 rounded-full text-lg font-medium hover:bg-cyan-50 transition-colors"
-              >
-                {companyInfo.phoneNumber}
-              </a>
-            </motion.div>
           </div>
         </div>
       </div>

@@ -865,19 +865,13 @@ export const VacationRentalPage: React.FC<VacationRentalPageProps> = ({
               viewport={{ once: true }}
               className="bg-white rounded-3xl p-12 shadow-xl"
             >
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+              <div className="mb-8">
                 <div>
                   <h3 className="text-xl font-medium text-gray-900 mb-4">📍 住所</h3>
                   <p className="text-gray-700">
                     〒{companyInfo.postalCode}<br />
-                    {companyInfo.prefecture}{companyInfo.city}{companyInfo.address}
-                  </p>
-                </div>
-                <div>
-                  <h3 className="text-xl font-medium text-gray-900 mb-4">📞 お問い合わせ</h3>
-                  <p className="text-gray-700">
-                    TEL: {companyInfo.phoneNumber}<br />
-                    Email: {companyInfo.email}
+                    {companyInfo.prefecture}{companyInfo.city}{companyInfo.streetAddress}
+                    {companyInfo.buildingName && ` ${companyInfo.buildingName}`}
                   </p>
                 </div>
               </div>

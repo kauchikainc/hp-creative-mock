@@ -107,24 +107,14 @@ export const NewsDetailPage: React.FC<NewsDetailPageProps> = ({
                   <p className="text-gray-700 mb-6">
                     ご不明な点やご予約については、お気軽にお問い合わせください。
                   </p>
-                  <div className="flex flex-col sm:flex-row gap-4">
-                    <motion.a
-                      href={`tel:${companyInfo.phoneNumber}`}
-                      className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-violet-500 text-white rounded-full text-center font-medium hover:shadow-lg transition-shadow"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      電話: {companyInfo.phoneNumber}
-                    </motion.a>
-                    <motion.a
-                      href={`mailto:${companyInfo.email}`}
-                      className="px-8 py-4 bg-white border-2 border-cyan-500 text-cyan-600 rounded-full text-center font-medium hover:bg-cyan-50 transition-colors"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      メール: {companyInfo.email}
-                    </motion.a>
-                  </div>
+                  <motion.button
+                    onClick={onBack}
+                    className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-violet-500 text-white rounded-full font-medium hover:shadow-lg transition-shadow"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    お知らせ一覧に戻る
+                  </motion.button>
                 </div>
               </div>
             </motion.div>

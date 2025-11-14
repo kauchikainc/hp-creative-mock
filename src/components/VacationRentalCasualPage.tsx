@@ -72,15 +72,15 @@ export const VacationRentalCasualPage: React.FC<VacationRentalCasualPageProps> =
       capacity: 2,
       size: 15,
       pricePerNight: 8000,
-      description: 'ゆったり過ごせる畳の和室です。窓からは緑が見えて癒されますよ♪',
-      imageUrl: 'https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?w=800&q=80',
+      description: 'ゆったり過ごせる畳の和室です。縁側から見える日本庭園が心を癒します。',
+      imageUrl: 'https://images.unsplash.com/photo-1566195992011-5f6b21e539aa?w=800&q=80',
       images: [
-        'https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?w=800&q=80',
-        'https://images.unsplash.com/photo-1540574163026-643ea20ade25?w=800&q=80',
+        'https://images.unsplash.com/photo-1566195992011-5f6b21e539aa?w=800&q=80',
         'https://images.unsplash.com/photo-1590073242678-70ee3fc28e8e?w=800&q=80',
+        'https://images.unsplash.com/photo-1585459865945-13c250f5b091?w=800&q=80',
       ],
-      amenities: ['WiFi', 'エアコン', 'テレビ', 'お茶セット', '座布団'],
-      view: '庭園ビュー',
+      amenities: ['WiFi', 'エアコン', '座布団', 'お茶セット', '浴衣'],
+      view: '日本庭園ビュー',
     },
     {
       id: '2',
@@ -101,19 +101,19 @@ export const VacationRentalCasualPage: React.FC<VacationRentalCasualPageProps> =
     },
     {
       id: '3',
-      name: 'ファミリールーム',
-      type: '和洋室',
+      name: '離れの和室',
+      type: '和室',
       capacity: 4,
       size: 30,
       pricePerNight: 14000,
-      description: '広々したファミリールーム。小さなお子さん連れにも安心です♪',
-      imageUrl: 'https://images.unsplash.com/photo-1618219908412-a29a1bb7b86e?w=800&q=80',
+      description: '母屋から少し離れた静かなお部屋。縁側で季節の移ろいを感じられます。',
+      imageUrl: 'https://images.unsplash.com/photo-1591088398332-8a7791972843?w=800&q=80',
       images: [
-        'https://images.unsplash.com/photo-1618219908412-a29a1bb7b86e?w=800&q=80',
-        'https://images.unsplash.com/photo-1617806118233-18e1de247200?w=800&q=80',
-        'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&q=80',
+        'https://images.unsplash.com/photo-1591088398332-8a7791972843?w=800&q=80',
+        'https://images.unsplash.com/photo-1566195992011-5f6b21e539aa?w=800&q=80',
+        'https://images.unsplash.com/photo-1585459865945-13c250f5b091?w=800&q=80',
       ],
-      amenities: ['WiFi', 'エアコン', 'テレビ', 'ドライヤー', 'お茶セット', 'ベビーベッド'],
+      amenities: ['WiFi', 'エアコン', '座布団', 'お茶セット', '浴衣', '縁側'],
       view: '庭園ビュー',
     },
   ];
@@ -126,7 +126,7 @@ export const VacationRentalCasualPage: React.FC<VacationRentalCasualPageProps> =
       description: '素泊まりでお得に！自由気ままに過ごしたい方におすすめです。',
       pricePerPerson: 6000,
       includes: ['客室利用', 'WiFi', 'タオル'],
-      imageUrl: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80',
+      imageUrl: 'https://images.unsplash.com/photo-1566195992011-5f6b21e539aa?w=800&q=80',
       applicableRooms: ['全客室'],
     },
     {
@@ -135,7 +135,7 @@ export const VacationRentalCasualPage: React.FC<VacationRentalCasualPageProps> =
       description: '手作りの朝ごはん付き♪ 地元の食材を使った和定食をご用意します！',
       pricePerPerson: 8000,
       includes: ['客室利用', 'WiFi', 'タオル', '朝食', 'お茶'],
-      imageUrl: 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&q=80',
+      imageUrl: 'https://images.unsplash.com/photo-1617093727343-374698b1b08d?w=800&q=80',
       applicableRooms: ['全客室'],
     },
     {
@@ -144,7 +144,7 @@ export const VacationRentalCasualPage: React.FC<VacationRentalCasualPageProps> =
       description: '2泊以上でお得！長く泊まるほどお安くなります。連泊大歓迎です😊',
       pricePerPerson: 7000,
       includes: ['客室利用', 'WiFi', 'タオル', 'ランドリー無料'],
-      imageUrl: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80',
+      imageUrl: 'https://images.unsplash.com/photo-1585459865945-13c250f5b091?w=800&q=80',
       applicableRooms: ['全客室'],
     },
   ];
@@ -161,10 +161,10 @@ export const VacationRentalCasualPage: React.FC<VacationRentalCasualPageProps> =
 
   // モックデータ: 周辺情報
   const nearbySpots = [
-    { name: 'コンビニ', distance: '徒歩3分', icon: '🏪' },
-    { name: 'スーパー', distance: '徒歩5分', icon: '🛒' },
+    { name: '神社', distance: '徒歩3分', icon: '⛩️' },
+    { name: '商店街', distance: '徒歩5分', icon: '🏮' },
     { name: '駅', distance: '徒歩10分', icon: '🚉' },
-    { name: '公園', distance: '徒歩7分', icon: '🌳' },
+    { name: '日本庭園', distance: '徒歩7分', icon: '🌸' },
   ];
 
   // モックデータ: ゲストレビュー (Premium機能)
@@ -190,8 +190,8 @@ export const VacationRentalCasualPage: React.FC<VacationRentalCasualPageProps> =
       guestName: '田中さん',
       stayDate: '2025年8月',
       rating: 4,
-      comment: '家族みんなでのんびり過ごせました。子供も楽しそうでした！',
-      roomType: 'ファミリールーム',
+      comment: '縁側でのんびり過ごせました。日本家屋の雰囲気が良かったです！',
+      roomType: '離れの和室',
     },
   ];
 
@@ -203,7 +203,7 @@ export const VacationRentalCasualPage: React.FC<VacationRentalCasualPageProps> =
       category: 'お知らせ',
       title: '年末年始の予約受付中です🎍',
       content: '年末年始（12/28～1/5）のご予約を受け付けています。\n\nこの期間は混み合いますので、お早めのご予約をおすすめします！\n\n料金：通常料金＋50%\nチェックイン：14:00～\nチェックアウト：～11:00\n\nご予約お待ちしています😊',
-      imageUrl: 'https://images.unsplash.com/photo-1482731215275-a1f151646268?w=800&q=80',
+      imageUrl: 'https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=800&q=80',
     },
     {
       id: '2',
@@ -218,7 +218,7 @@ export const VacationRentalCasualPage: React.FC<VacationRentalCasualPageProps> =
       category: '施設情報',
       title: 'お風呂をリニューアルしました♨️',
       content: 'お風呂を新しくしました！\n\n新しい設備：\n・大きな浴槽\n・シャワーヘッド交換\n・浴室乾燥機\n\nもっと快適に使えるようになりました。ぜひご利用ください！',
-      imageUrl: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=800&q=80',
+      imageUrl: 'https://images.unsplash.com/photo-1566195992011-5f6b21e539aa?w=800&q=80',
     },
   ];
 
@@ -226,22 +226,22 @@ export const VacationRentalCasualPage: React.FC<VacationRentalCasualPageProps> =
   const blogPosts: BlogPost[] = [
     {
       id: '1',
-      title: '近所のおすすめラーメン屋さん🍜',
-      excerpt: '歩いて5分のところにある絶品ラーメン店をご紹介！',
-      content: '民泊から歩いて5分のところに、めちゃくちゃ美味しいラーメン屋さんがあります。\n\n「らーめん山田」さんです！\n\n特におすすめは味噌ラーメン。濃厚なスープに太麺がよく絡んで最高です。\nチャーシューも分厚くて、食べ応えバツグンです。\n\n営業時間：11:00～14:00、18:00～22:00\n定休日：火曜日\n\nお泊まりの際はぜひ行ってみてください！',
+      title: '近所の神社でお参り⛩️',
+      excerpt: '徒歩3分の氏神様で、心静かなひとときを',
+      content: '民泊から歩いて3分のところに、地元の氏神様があります。\n\n「八幡神社」です。\n\n朝のお散歩がてら、お参りするのがおすすめです。\n静かで、鳥の声が心地よく聞こえます。\n\n境内には立派な御神木があり、樹齢200年以上だそうです。\n手水舎でお清めして、心静かにお参りすると、とても清々しい気持ちになれます。\n\nおみくじもありますよ。\n\n四季折々の景色も美しいので、ぜひ訪れてみてください。',
       date: '2025-11-10',
-      category: 'グルメ',
-      imageUrl: 'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=800&q=80',
+      category: '和の暮らし',
+      imageUrl: 'https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=800&q=80',
       author: 'オーナー',
     },
     {
       id: '2',
-      title: '季節のお花が見頃です🌸',
-      excerpt: '近くの公園で綺麗なお花が咲いています！',
-      content: '徒歩7分の公園で、今の季節のお花が見頃を迎えています。\n\nコスモスやダリアが綺麗に咲いていて、お散歩にぴったりです。\n\n朝の散歩もおすすめですよ。空気が澄んでいて気持ちいいです。\n\nベンチもあるので、ゆっくり休憩もできます。\n\nカメラを持ってお出かけしてみてはいかがでしょうか📷',
+      title: '縁側でお茶の時間🍵',
+      excerpt: '日本庭園を眺めながら、ほっと一息',
+      content: '離れの和室には縁側があります。\n\nここから日本庭園を眺めながら、お茶を飲む時間が最高です。\n\n季節によって庭の表情が変わります。\n春は桜、夏は青もみじ、秋は紅葉、冬は雪景色。\n\n鳥のさえずりや、風に揺れる木々の音を聞きながら、\nゆっくりと流れる時間を楽しんでください。\n\nお茶セットは各お部屋に用意していますので、\nご自由にお使いくださいね。\n\n都会の喧騒を離れて、日本の「侘び寂び」を感じていただけたら嬉しいです。',
       date: '2025-10-25',
-      category: 'おでかけ',
-      imageUrl: 'https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=800&q=80',
+      category: '和の暮らし',
+      imageUrl: 'https://images.unsplash.com/photo-1566195992011-5f6b21e539aa?w=800&q=80',
       author: 'オーナー',
     },
   ];
@@ -350,8 +350,8 @@ export const VacationRentalCasualPage: React.FC<VacationRentalCasualPageProps> =
         <section className="relative h-96">
           <div className="absolute inset-0">
             <img
-              src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=1600&q=80"
-              alt="民泊外観"
+              src="https://images.unsplash.com/photo-1591088398332-8a7791972843?w=1600&q=80"
+              alt="日本家屋の外観"
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-orange-900/30 to-black/50" />
@@ -377,7 +377,7 @@ export const VacationRentalCasualPage: React.FC<VacationRentalCasualPageProps> =
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="text-xl mb-6"
               >
-                おうちみたいにくつろげる、あったか民泊
+                おうちみたいにくつろげる、和の戸建て民泊
               </motion.p>
               <motion.button
                 initial={{ opacity: 0, y: 10 }}
@@ -416,8 +416,11 @@ export const VacationRentalCasualPage: React.FC<VacationRentalCasualPageProps> =
                   <h2 className="text-2xl font-bold text-gray-900 mb-4">ようこそ！ 😊</h2>
                   <p className="text-gray-700 leading-relaxed mb-4">
                     こんにちは！オーナーです。<br />
-                    うちの民泊は、一軒家を改装して作りました。<br />
-                    まるで実家に帰ったような、ゆったりした時間を過ごしていただけたら嬉しいです。<br />
+                    この家は、祖父母が住んでいた古い日本家屋を改装しました。<br />
+                    畳の部屋、縁側、日本庭園...昔ながらの日本の暮らしを大切に残しています。<br />
+                    <br />
+                    都会の喧騒を離れて、ゆったりとした時間をお過ごしください。<br />
+                    縁側でお茶を飲んだり、庭を眺めたり、日本の四季を感じていただけたら嬉しいです。<br />
                     <br />
                     困ったことがあれば、いつでも声をかけてくださいね♪
                   </p>
@@ -821,14 +824,8 @@ export const VacationRentalCasualPage: React.FC<VacationRentalCasualPageProps> =
                 <h3 className="text-lg font-bold text-gray-900 mb-2">📍 住所</h3>
                 <p className="text-gray-700">
                   〒{companyInfo.postalCode}<br />
-                  {companyInfo.prefecture}{companyInfo.city}{companyInfo.address}
-                </p>
-              </div>
-              <div className="mb-6">
-                <h3 className="text-lg font-bold text-gray-900 mb-2">📞 連絡先</h3>
-                <p className="text-gray-700">
-                  電話: {companyInfo.phoneNumber}<br />
-                  メール: {companyInfo.email}
+                  {companyInfo.prefecture}{companyInfo.city}{companyInfo.streetAddress}
+                  {companyInfo.buildingName && ` ${companyInfo.buildingName}`}
                 </p>
               </div>
               <div>
@@ -857,22 +854,14 @@ export const VacationRentalCasualPage: React.FC<VacationRentalCasualPageProps> =
               <p className="text-xl text-white/90 mb-8">
                 気になることがあれば、気軽にお問い合わせください
               </p>
-              <div className="flex flex-col md:flex-row items-center justify-center gap-4">
-                <motion.button
-                  onClick={() => setShowContactForm(true)}
-                  className="px-8 py-4 bg-white text-orange-600 rounded-full text-lg font-bold hover:shadow-2xl transition-shadow"
-                  whileHover={{ scale: 1.05, rotate: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  お問い合わせ
-                </motion.button>
-                <a
-                  href={`tel:${companyInfo.phoneNumber}`}
-                  className="px-8 py-4 bg-white text-orange-600 rounded-full text-lg font-bold hover:shadow-2xl transition-shadow flex items-center gap-2"
-                >
-                  📞 {companyInfo.phoneNumber}
-                </a>
-              </div>
+              <motion.button
+                onClick={() => setShowContactForm(true)}
+                className="px-8 py-4 bg-white text-orange-600 rounded-full text-lg font-bold hover:shadow-2xl transition-shadow"
+                whileHover={{ scale: 1.05, rotate: -2 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                お問い合わせ
+              </motion.button>
             </motion.div>
           </div>
         </section>

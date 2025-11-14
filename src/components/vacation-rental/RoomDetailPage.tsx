@@ -195,12 +195,12 @@ export const RoomDetailPage: React.FC<RoomDetailPageProps> = ({
                     <p className="text-sm text-gray-600 mb-4">
                       お気軽にお問い合わせください
                     </p>
-                    <a
-                      href={`tel:${companyInfo.phoneNumber}`}
-                      className="block text-center px-6 py-3 bg-white text-cyan-600 rounded-full font-medium hover:shadow-md transition-shadow"
+                    <button
+                      onClick={onBack}
+                      className="block w-full text-center px-6 py-3 bg-white text-cyan-600 rounded-full font-medium hover:shadow-md transition-shadow"
                     >
-                      {companyInfo.phoneNumber}
-                    </a>
+                      客室一覧に戻る
+                    </button>
                   </div>
                 </motion.div>
               </div>

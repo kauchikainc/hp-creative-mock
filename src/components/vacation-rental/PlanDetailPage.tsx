@@ -125,24 +125,14 @@ export const PlanDetailPage: React.FC<PlanDetailPageProps> = ({
               <p className="text-gray-600 mb-8">
                 ご不明な点やご要望がございましたら、お気軽にお問い合わせください
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <motion.a
-                  href={`tel:${companyInfo.phoneNumber}`}
-                  className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-violet-500 text-white rounded-full text-lg font-medium hover:shadow-lg transition-shadow"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  電話で予約: {companyInfo.phoneNumber}
-                </motion.a>
-                <motion.a
-                  href={`mailto:${companyInfo.email}`}
-                  className="px-8 py-4 bg-white border-2 border-cyan-500 text-cyan-600 rounded-full text-lg font-medium hover:bg-cyan-50 transition-colors"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  メールで問い合わせ
-                </motion.a>
-              </div>
+              <motion.button
+                onClick={onBack}
+                className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-violet-500 text-white rounded-full text-lg font-medium hover:shadow-lg transition-shadow"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                プラン一覧に戻る
+              </motion.button>
             </motion.div>
           </div>
         </div>
