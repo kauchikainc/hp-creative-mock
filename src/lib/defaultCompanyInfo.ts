@@ -12,4 +12,6 @@ export const DEFAULT_COMPANY_INFO: CompanyInfo = {
   city: '千代田区',
   streetAddress: '千代田1-1-1',
   buildingName: 'サンプルビル3F',
+  phone: '03-1234-5678',
+  email: 'info@sample.co.jp',
 };

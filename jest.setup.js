@@ -35,3 +35,9 @@ jest.mock('next/navigation', () => ({
   usePathname: jest.fn(() => '/'),
   useSearchParams: jest.fn(() => new URLSearchParams()),
 }));
+
+// window.scrollToのモック
+Object.defineProperty(window, 'scrollTo', {
+  value: jest.fn(),
+  writable: true,
+});

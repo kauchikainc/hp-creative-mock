@@ -32,6 +32,9 @@ export const INDUSTRIES = {
   CAFE: 'cafe',                      // カフェ
   VACATION_RENTAL: 'vacation-rental', // 民泊
   VACATION_RENTAL_CASUAL: 'vacation-rental-casual', // 民泊(大衆)
+  NURSING_CARE: 'nursing-care', // 介護
+  AFTER_SCHOOL_DAY_SERVICE: 'after-school-day-service', // 放課後デイサービス
+  EMPLOYMENT_SUPPORT: 'employment-support', // 就労支援
   // 今後追加予定:
   // CONSTRUCTION: 'construction',      // 建設業
   // RESTAURANT: 'restaurant',          // 飲食店

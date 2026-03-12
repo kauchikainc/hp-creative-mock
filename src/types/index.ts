@@ -20,6 +20,10 @@ export interface CompanyInfo {
   streetAddress: string;
   /** 建物名（任意） */
   buildingName: string;
+  /** 電話番号（任意） */
+  phone: string;
+  /** メールアドレス（任意） */
+  email: string;
 }
 
 /**

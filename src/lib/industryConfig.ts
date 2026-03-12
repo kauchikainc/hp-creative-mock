@@ -117,6 +117,27 @@ export const INDUSTRY_CONFIG: Record<Industry, IndustryConfig> = {
     primaryColor: '#f97316', // orange-500
     accentColor: '#fbbf24', // amber-400
   },
+  'nursing-care': {
+    name: '介護',
+    description: '安心と信頼で、大切なご家族をお守りします',
+    heroImage: '/images/nursing-care-hero.jpg',
+    primaryColor: '#059669', // emerald-600
+    accentColor: '#34d399', // emerald-400
+  },
+  'after-school-day-service': {
+    name: '放課後デイサービス',
+    description: 'お子様の笑顔と成長を、一緒に見守ります',
+    heroImage: '/images/after-school-day-service-hero.jpg',
+    primaryColor: '#d97706', // amber-600
+    accentColor: '#fbbf24', // amber-400
+  },
+  'employment-support': {
+    name: '就労支援',
+    description: '一人ひとりの「働きたい」を、確かな一歩に',
+    heroImage: '/images/employment-support-hero.jpg',
+    primaryColor: '#0d9488', // teal-600
+    accentColor: '#2dd4bf', // teal-400
+  },
   // 今後追加予定の業種設定例:
   // 'construction': {
   //   name: '建設業',

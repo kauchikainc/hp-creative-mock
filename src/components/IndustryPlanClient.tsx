@@ -15,6 +15,9 @@ import { GynecologySalonPage } from './GynecologySalonPage';
 import { CafePage } from './CafePage';
 import { VacationRentalPage } from './VacationRentalPage';
 import { VacationRentalCasualPage } from './VacationRentalCasualPage';
+import { NursingCarePage } from './NursingCarePage';
+import { AfterSchoolDayServicePage } from './AfterSchoolDayServicePage';
+import { EmploymentSupportPage } from './EmploymentSupportPage';
 import { notFound } from 'next/navigation';
 
 /**
@@ -83,6 +86,15 @@ export const IndustryPlanClient = ({ industry, plan }: IndustryPlanClientProps) 
 
     case INDUSTRIES.VACATION_RENTAL_CASUAL:
       return <VacationRentalCasualPage companyInfo={companyInfo} plan={plan} />;
+
+    case INDUSTRIES.NURSING_CARE:
+      return <NursingCarePage companyInfo={companyInfo} plan={plan} />;
+
+    case INDUSTRIES.AFTER_SCHOOL_DAY_SERVICE:
+      return <AfterSchoolDayServicePage companyInfo={companyInfo} plan={plan} />;
+
+    case INDUSTRIES.EMPLOYMENT_SUPPORT:
+      return <EmploymentSupportPage companyInfo={companyInfo} plan={plan} />;
 
     default:
       notFound();
